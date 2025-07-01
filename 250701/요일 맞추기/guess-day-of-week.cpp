@@ -24,9 +24,9 @@ int main() {
 
     int diff = day2 - day1;
     int result = diff % 7;
-    if (result < 0) result += 7; // 음수 방지
+    if (result < 0) result += 7;
 
     cout << date[result];
-    
+
     return 0;
 }
