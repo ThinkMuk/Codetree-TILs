@@ -9,6 +9,11 @@ int digits[20] = {};
 int main() {
     cin >> n;
 
+    if (n == 0) {
+        cout << 0;
+        return 0;
+    }
+
     while(n) {
         digits[cnt] = n % 2;
         n /= 2;
