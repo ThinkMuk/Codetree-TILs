@@ -1,31 +1,27 @@
 #include <iostream>
-
 using namespace std;
 
 int n;
-int x[100];
-char dir[100];
-int startIdx = 1500;
 int arr[3001] = {0,};
-int ans = 0;
+int curIdx = 1500;
 
 int main() {
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> x[i] >> dir[i];
-    }
+        int x;
+        char dir;
+        cin >> x >> dir;
 
-    for(int i = 0; i < n; i++) {
-        if(dir[i] == 'R') {
-            for(int j = 0; j < x[i]; j++) {
-                arr[startIdx]++;
-                startIdx++;
+        if (dir == 'R') {
+            for (int j = 0; j < x; j++) {
+                arr[curIdx]++;
+                curIdx++;
             }
         } else {
-            for(int j = 0; j < x[i]; j++) {
-                arr[startIdx]++;
-                startIdx--;
+            for (int j = 0; j < x; j++) {
+                arr[curIdx]++;
+                curIdx--;
             }
         }
     }
