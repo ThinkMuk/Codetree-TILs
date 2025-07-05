@@ -30,30 +30,11 @@ int main() {
         }
     }
 
-    bool start = false;
-    int tmp = 0;
-    for(int i = 0; i < 2001; i++) {
-        if(arr[i] > 1) {
-            if(start == false) { // 시작
-                start = true;
-                tmp++;
-            }
-            else
-                tmp++;
-        }
-        else {
-            if(start == true) { // 끝내기
-                ans += tmp;
-                tmp = 0;
-                start = false;
-            }
-        }
+    int ans = 0;
+    for (int i = 0; i < 2001; i++) {
+        if (arr[i] >= 2)
+            ans++;
     }
-
-    if(start) {
-        ans += tmp;
-    }
-
 
     cout << ans;
 
