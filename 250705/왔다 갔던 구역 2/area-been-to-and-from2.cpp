@@ -5,8 +5,8 @@ using namespace std;
 int n;
 int x[100];
 char dir[100];
-int startIdx = 1000;
-int arr[2001] = {0,};
+int startIdx = 1500;
+int arr[3001] = {0,};
 int ans = 0;
 
 int main() {
@@ -31,7 +31,7 @@ int main() {
     }
 
     int ans = 0;
-    for (int i = 0; i < 2001; i++) {
+    for (int i = 0; i < 3001; i++) {
         if (arr[i] >= 2)
             ans++;
     }
