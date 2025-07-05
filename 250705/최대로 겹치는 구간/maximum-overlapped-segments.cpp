@@ -12,12 +12,12 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         cin >> x1[i] >> x2[i];
-        for(int j = x1[i]; j <= x2[i]; j++) {
+        for(int j = x1[i]+100; j <= x2[i]+100; j++) {
             ans[j]++;
         }
     }
 
-    for(int i = 0; i < 100; i++) {
+    for(int i = 0; i <= 200; i++) {
         if (ans[i] > maximum) {
             maximum = ans[i];
         }
