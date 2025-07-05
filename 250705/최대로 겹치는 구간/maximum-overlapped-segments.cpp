@@ -12,7 +12,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         cin >> x1[i] >> x2[i];
-        for(int j = x1[i]+100; j <= x2[i]+100; j++) {
+        for(int j = x1[i]+100; j < x2[i]+100; j++) {
             ans[j]++;
         }
     }
