@@ -4,7 +4,7 @@ using namespace std;
 
 int n;
 int x1[100], x2[100];
-int ans[100] = {0,};
+int ans[201] = {0,};
 int maximum = 0;
 
 int main() {
