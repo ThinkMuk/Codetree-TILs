@@ -50,6 +50,11 @@ int main() {
         }
     }
 
+    if(start) {
+        ans += tmp;
+    }
+
+
     cout << ans;
 
     return 0;
