@@ -15,8 +15,8 @@ int main() {
 
         if (dir == 'R') {
             for (int j = 0; j < x; j++) {
-                curIdx++;
                 arr[curIdx]++;
+                curIdx++;
             }
         } else {
             for (int j = 0; j < x; j++) {
