@@ -5,8 +5,8 @@ using namespace std;
 int n;
 int x[100];
 char dir[100];
-int startIdx = 100;
-int arr[201] = {0,};
+int startIdx = 1000;
+int arr[2001] = {0,};
 int ans = 0;
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
 
     bool start = false;
     int tmp = 0;
-    for(int i = 0; i < 201; i++) {
+    for(int i = 0; i < 2001; i++) {
         if(arr[i] > 1) {
             if(start == false) { // 시작
                 start = true;
