@@ -21,7 +21,7 @@ int main() {
     for(int i = 0; i < N; i++) {
         for(int j = x[i]; j < x[i]+8; j++) {
             for(int k = y[i]; k < y[i]+8; k++) {
-                arr[j][k] = 1;
+                arr[j+100][k+100] = 1;
             }
         }
     }
