@@ -12,7 +12,7 @@ int main() {
     }
 
     int cnt = 1;
-    int max = 1;
+    int max = 0;
     for(int i = 0; i < N; i++) {
         if(i == 0 || arr[i] == arr[i-1])
             cnt++;
@@ -22,10 +22,6 @@ int main() {
             cnt = 1;
         }
     }
-
-    if (cnt > max)
-        max = cnt;
-
     cout << max;
 
     return 0;
