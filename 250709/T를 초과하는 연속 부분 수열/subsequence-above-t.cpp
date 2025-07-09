@@ -16,7 +16,7 @@ int main() {
     for(int i = 0; i < n; i++) {
         if(i == 0 || (arr[i] > t) == (arr[i-1] > t))
             cnt++;
-        if((arr[i] > t) != (arr[i-1] > t)) {
+        else {
             if(max < cnt)
                 max = cnt;
             cnt = 1;
