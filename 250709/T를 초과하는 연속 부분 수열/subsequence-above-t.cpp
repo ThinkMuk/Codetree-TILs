@@ -26,7 +26,10 @@ int main() {
     if(max < cnt)
         max = cnt;
 
-    cout << max;
+    if(max == 1)   
+        cout << 0;
+    else
+        cout << max;
 
     return 0;
 }
