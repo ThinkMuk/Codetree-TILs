@@ -22,6 +22,10 @@ int main() {
             cnt = 1;
         }
     }
+
+    if (max < cnt)
+        max = cnt;
+
     cout << max;
 
     return 0;
