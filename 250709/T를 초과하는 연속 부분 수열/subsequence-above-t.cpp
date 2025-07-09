@@ -5,6 +5,10 @@ using namespace std;
 int n, t;
 int arr[1000];
 
+bool comp(int a, int b) {
+    return a > b;
+}
+
 int main() {
     cin >> n >> t;
     for (int i = 0; i < n; i++) {
@@ -12,24 +16,29 @@ int main() {
     }
 
     int cnt = 1;
-    int max = 0;
+    int ans = 0;
 
-    for(int i = 0; i < n - 1; i++) {
-        if((arr[i] > t) == (arr[i+1] > t)) {
-            cnt++;
-        } else {
-            if(max < cnt)
-                max = cnt;
-            cnt = 1;
+    for (int i = 0; i < n; i++) {
+        if(i == 0)
+            continue;
+        else {
+            if(comp(arr[i],t) == comp(arr[i-1],t))
+                cnt++;
+            else {
+                if(ans < cnt)
+                    ans = cnt;
+                cnt = 1;
+            }
         }
     }
 
-    if(max < cnt)
-        max = cnt;
-    if(max == 1)   
+    if(ans < cnt)
+        ans = cnt;
+
+    if(ans == 1)
         cout << 0;
     else
-        cout << max;
-
+        cout << ans;
+        
     return 0;
 }
