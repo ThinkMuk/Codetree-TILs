@@ -11,14 +11,15 @@ int main() {
         cin >> arr[i];
     }
 
-    int cnt = 0;
-    int max = 0;
-    for(int i = 0; i < n; i++) {
-        if(i == 0 || (arr[i] > t) == (arr[i-1] > t))
+    int cnt = 1;
+    int maxLen = 0;
+
+    for(int i = 0; i < n - 1; i++) {
+        if((arr[i] >= t) == (arr[i+1] >= t)) {
             cnt++;
-        else {
-            if(max < cnt)
-                max = cnt;
+        } else {
+            if(maxLen < cnt)
+                maxLen = cnt;
             cnt = 1;
         }
     }
