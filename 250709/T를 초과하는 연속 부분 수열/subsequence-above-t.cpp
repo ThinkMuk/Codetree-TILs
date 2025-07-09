@@ -18,15 +18,14 @@ int main() {
         if((arr[i] >= t) == (arr[i+1] >= t)) {
             cnt++;
         } else {
-            if(maxLen < cnt)
-                maxLen = cnt;
+            if(max < cnt)
+                max = cnt;
             cnt = 1;
         }
     }
 
     if(max < cnt)
         max = cnt;
-
     if(max == 1)   
         cout << 0;
     else
