@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 int n, m;
@@ -7,68 +6,40 @@ char d[1000];
 int t[1000];
 char d2[1000];
 int t2[1000];
-bool meet = false;
-int A[1000000] = {0};
-int B[1000000] = {0};
-int moveIdxA = 0, moveIdxB = 0;
+
+int A[1000000], B[1000000];
+int idxA = 0, idxB = 0;
 
 int main() {
     cin >> n >> m;
-
     for (int i = 0; i < n; i++) cin >> d[i] >> t[i];
-
     for (int i = 0; i < m; i++) cin >> d2[i] >> t2[i];
 
-    for(int i = 0; i < n; i++) {
-        if(d[i] == 'L') {
-            for(int j = moveIdxA; j < moveIdxA + t[i]; j++) {
-                if(j == 0)
-                    A[j] = -1;
-                else
-                    A[j] = A[j-1] - 1;
-            }
-        }
-        else {
-            for(int j = moveIdxA; j < moveIdxA + t[i]; j++) {
-                if(j == 0)
-                    A[j] = 1;
-                else
-                    A[j] = A[j-1] + 1;
-            }
-        }
-        moveIdxA+=t[i];
-    }
-
-    for(int i = 0; i < m; i++) {
-        if(d2[i] == 'L') {
-            for(int j = moveIdxB; j < moveIdxB + t2[i]; j++) {
-                if(j == 0)
-                    B[j] = -1;
-                else
-                    B[j] = B[j-1] - 1;
-            }
-        }
-        else {
-            for(int j = moveIdxB; j < moveIdxB + t2[i]; j++) {
-                if(j == 0)
-                    B[j] = 1;
-                else
-                    B[j] = B[j-1] + 1;
-            }
-        }
-        moveIdxB+=t2[i];
-    }
-
-    for(int i = 0; i < 1000000; i++) {
-        if(A[i] == B[i]) {
-            cout << i + 1;
-            meet = true;
-            break;
+    int pos = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < t[i]; j++) {
+            A[idxA++] = pos;
+            pos += (d[i] == 'L' ? 1 : -1);
         }
     }
 
-    if(meet==false)
-        cout << -1;
+    pos = 0;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < t2[i]; j++) {
+            B[idxB++] = pos;
+            pos += (d2[i] == 'L' ? 1 : -1);
+        }
+    }
 
+    int maxTime = max(idxA, idxB);
+
+    for (int i = 1; i < maxTime; i++) {
+        if (A[i] == B[i]) {
+            cout << i;
+            return 0;
+        }
+    }
+
+    cout << -1;
     return 0;
 }
