@@ -24,14 +24,16 @@ int main() {
             for(int j = moveIdxA; j < moveIdxA + t[i]; j++) {
                 if(j == 0)
                     A[j] = -1;
-                A[j] = A[j-1] - 1;
+                else
+                    A[j] = A[j-1] - 1;
             }
         }
         else {
             for(int j = moveIdxA; j < moveIdxA + t[i]; j++) {
                 if(j == 0)
                     A[j] = 1;
-                A[j] = A[j-1] + 1;
+                else
+                    A[j] = A[j-1] + 1;
             }
         }
         moveIdxA+=t[i];
@@ -42,14 +44,16 @@ int main() {
             for(int j = moveIdxB; j < moveIdxB + t2[i]; j++) {
                 if(j == 0)
                     B[j] = -1;
-                B[j] = B[j-1] - 1;
+                else
+                    B[j] = B[j-1] - 1;
             }
         }
         else {
             for(int j = moveIdxB; j < moveIdxB + t2[i]; j++) {
                 if(j == 0)
                     B[j] = 1;
-                B[j] = B[j-1] + 1;
+                else
+                    B[j] = B[j-1] + 1;
             }
         }
         moveIdxB+=t2[i];
