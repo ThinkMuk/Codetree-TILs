@@ -9,7 +9,7 @@ int t_b[50000];
 char d_b[50000];
 int A[1000000] = {0};
 int B[1000000] = {0};
-int AIdx = 0; int BIdx = 0;
+int AIdx = 1; int BIdx = 1;
 
 int main() {
     cin >> n >> m;
@@ -38,10 +38,10 @@ int main() {
 
     int maxIdx = max(AIdx, BIdx) - 1;
 
-    for(int i = AIdx; i <= maxIdx; i++)
-        A[i] = A[i - 1];
-    for(int i = BIdx; i <= maxIdx; i++)
-        B[i] = B[i - 1];
+    for(int i = AIdx + 1; i <= maxIdx; i++)
+        A[i] = A[AIdx - 1];
+    for(int i = BIdx + 1; i <= maxIdx; i++)
+        B[i] = B[BIdx - 1];
 
     int ans = 0;
 
