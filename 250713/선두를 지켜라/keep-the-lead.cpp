@@ -30,10 +30,10 @@ int main() {
         }
     }
 
-    int maxIdx = max(AIdx, BIdx);
+    int minIdx = min(AIdx, BIdx);
     int ans = 0; bool head = A[1] > B[1];
 
-    for(int i = 2; i < maxIdx; i++) {
+    for(int i = 2; i < minIdx; i++) {
         if(head == true) {
             if(A[i] < B[i]) {
                 head = false;
