@@ -45,9 +45,6 @@ int main() {
 
     int ans = 0;
 
-    if (A[0] == B[0])
-        ans++;
-
     for(int i = 1; i <= maxIdx; i++) {
         if(A[i] == B[i] && A[i - 1] != B[i - 1]) {
             ans++;
