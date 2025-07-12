@@ -50,12 +50,12 @@ int main() {
         ans++;
     }
 
-    for(int i = 1; i < maxIdx; i++) {
-        if(A[i] == B[i]) {
-            if(A[i-1] != B[i-1])
-                ans++;
+    for (int i = 1; i <= maxIdx; i++) {
+        if (A[i] == B[i] && A[i - 1] != B[i - 1]) {
+            ans++;
         }
     }
+
 
     cout << ans;
 
