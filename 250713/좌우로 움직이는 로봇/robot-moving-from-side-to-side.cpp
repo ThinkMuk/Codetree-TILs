@@ -36,7 +36,7 @@ int main() {
         BIdx += t_b[i];
     }
 
-    int maxIdx = max(AIdx, BIdx);
+    int maxIdx = max(AIdx, BIdx) - 1;
 
     for(int i = AIdx; i <= maxIdx; i++)
         A[i] = A[AIdx - 1];
