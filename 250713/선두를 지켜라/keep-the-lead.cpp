@@ -31,20 +31,20 @@ int main() {
     }
 
     int minIdx = min(AIdx, BIdx);
-    int ans = 0; bool head = A[1] > B[1];
+    int ans = 0;
+    int i = 1;
 
-    for(int i = 2; i < minIdx; i++) {
-        if(head == true) {
-            if(A[i] < B[i]) {
-                head = false;
-                ans++;
-            }
+    while (i < minIdx && A[i] == B[i]) i++;
+    bool head = (A[i] > B[i]);
+
+    for(i = i+1; i < minIdx; i++) {
+        if(head && A[i] < B[i]) {
+            head = false;
+            ans++;
         }
-        else {
-            if(A[i] > B[i]) {
-                head = true;
-                ans++;
-            }
+        else if(!head && A[i] > B[i]) {
+            head = true;
+            ans++;
         }
     }
 
