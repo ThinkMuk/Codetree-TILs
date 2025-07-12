@@ -9,7 +9,7 @@ int t_b[50000];
 char d_b[50000];
 int A[1000000] = {0};
 int B[1000000] = {0};
-int AIdx = 1; int BIdx = 1;
+int AIdx = 0; int BIdx = 0;
 
 int main() {
     cin >> n >> m;
