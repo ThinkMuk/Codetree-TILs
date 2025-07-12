@@ -31,23 +31,19 @@ int main() {
     }
 
     int maxIdx = max(AIdx, BIdx);
-    int ans = 0; bool head = true;
+    int ans = 0; bool head = A[1] > B[1];
 
-    for(int i = 0; i < maxIdx; i++) {
-        if(i == 1)
-            A[i] > B[i] ? head = true : head = false;
-        else {
-            if(head == true) {
-                if(A[i] < B[i]) {
-                    head = false;
-                    ans++;
-                }
+    for(int i = 2; i < maxIdx; i++) {
+        if(head == true) {
+            if(A[i] < B[i]) {
+                head = false;
+                ans++;
             }
-            else {
-                if(A[i] > B[i]) {
-                    head = true;
-                    ans++;
-                }
+        }
+        else {
+            if(A[i] > B[i]) {
+                head = true;
+                ans++;
             }
         }
     }
