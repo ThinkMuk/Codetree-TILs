@@ -7,9 +7,9 @@ int t[50000];
 char d[50000];
 int t_b[50000];
 char d_b[50000];
-int A[1000000] = {0};
-int B[1000000] = {0};
-int AIdx = 0; int BIdx = 0;
+int A[1000001] = {0};
+int B[1000001] = {0};
+int AIdx = 1; int BIdx = 1;
 
 int main() {
     cin >> n >> m;
@@ -55,5 +55,3 @@ int main() {
 
     return 0;
 }
-
-
