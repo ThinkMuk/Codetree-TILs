@@ -34,7 +34,7 @@ int main() {
         } else if (b_infected && !a_infected && devs[b].second < K) {
             devs[a].first = true;
             devs[b].second++;
-        } else if (a_infected && b_infected && devs[a].second < K || devs[b].second < K) {
+        } else if (a_infected && b_infected && devs[a].second < K && devs[b].second < K) {
             devs[a].second++;
             devs[b].second++;
         }
