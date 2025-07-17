@@ -30,14 +30,12 @@ int main() {
 
         if (a_infected && !b_infected && devs[a].second < K) {
             devs[b].first = true;
-            devs[a].second++;
         } else if (b_infected && !a_infected && devs[b].second < K) {
             devs[a].first = true;
-            devs[b].second++;
-        } else if (a_infected && b_infected && devs[a].second < K && devs[b].second < K) {
-            devs[a].second++;
-            devs[b].second++;
         }
+
+        if (a_infected && devs[a].second < K) devs[a].second++;
+        if (b_infected && devs[b].second < K) devs[b].second++;
     }
 
     for (int i = 1; i <= N; i++) {
