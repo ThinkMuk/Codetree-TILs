@@ -13,10 +13,10 @@ int main() {
     int dir = 3;
     for(char a: dirs) {
         if(a == 'L') {
-            dir = (dir-1 + 4) % 3;
+            dir = (dir-1 + 4) % 4;
         }
         else if (a == 'R') {
-            dir = (dir+1) % 3;
+            dir = (dir+1) % 4;
         }
         else if (a == 'F') {
             x += dx[dir];
