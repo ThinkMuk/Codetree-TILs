@@ -5,22 +5,18 @@ using namespace std;
 int n, t;
 int r, c;
 char d;
-int dx[4] = {1, 0, -1, 0};
-int dy[4] = {0, -1, 0, 1};
+int dx[4] = {0, 1, 0, -1};
+int dy[4] = {1, 0, -1, 0};
 
 bool inRange(int x, int y) {
     return (0 <= x && x < n && 0 <= y && y < n);
 }
 
 int dir(char d) {
-    if(d == 'U')
-        return 3;
-    else if (d == 'D')
-        return 1;
-    else if (d == 'R')
-        return 0;
-    else if (d == 'L')
-        return 2;
+    if(d == 'R') return 0;
+    else if(d == 'D') return 1;
+    else if(d == 'L') return 2;
+    else if(d == 'U') return 3;
 }
 
 int main() {
@@ -32,16 +28,14 @@ int main() {
     c -= 1;
 
     for(int i = 0; i < t; i++) {
-        int tmpR = c + dx[numDir];
-        int tmpC = r + dy[numDir];
+        int tmpR = r + dx[numDir];  // r은 행, dx는 행 변화
+        int tmpC = c + dy[numDir];  // c는 열, dy는 열 변화
 
-        if(inRange(tmpC, tmpR)) {
-            c += dx[numDir];
-            r += dy[numDir];
-        }
-        //0 <= x && x < n && 0 <= y && y < n
-        else if(!inRange(tmpC, tmpR)) { //부딪혔을 때
-            numDir = (numDir+2) % 4;
+        if(inRange(tmpR, tmpC)) {
+            r += dx[numDir];
+            c += dy[numDir];
+        } else { //부딪혔을 때
+            numDir = (numDir + 2) % 4;
         }
     }
 
