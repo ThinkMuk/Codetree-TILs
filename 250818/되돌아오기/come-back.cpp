@@ -4,7 +4,6 @@ using namespace std;
 int N;
 char dir[100];
 int dist[100];
-int arr[20001][20001];
 
 int main() {
     cin >> N;
@@ -15,7 +14,6 @@ int main() {
 
     int cnt = 0;
     int x = 10000, y = 10000;
-    arr[x][y] = cnt;
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < dist[i]; j++) {
@@ -29,8 +27,6 @@ int main() {
                 cout << cnt;
                 return 0;
             }
-
-            arr[x][y] = cnt + 1;
         }
     }
 
