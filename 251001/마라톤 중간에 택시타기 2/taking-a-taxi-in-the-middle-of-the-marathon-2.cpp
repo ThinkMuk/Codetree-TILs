@@ -17,31 +17,20 @@ int main() {
 
     int min_ans = INT_MAX;
 
-    for(int i = 0 ; i < n; i++) {
+    for (int skip = 1; skip <= n - 2; skip++) {
         int ttl = 0;
-        int prevX = 0; int prevY = 0;
+        int prevX = x[0], prevY = y[0];
 
-        for(int j = 0; j < n; j++) {
-            if(j == 0 || j == n - 1) {
-                ttl += abs(x[j] - prevX) + abs(y[j] - prevY);
-                prevX = x[j];
-                prevY = y[j];
-            }
-            else {
-                if(j == i)
-                    continue;
-                else {
-                    ttl += abs(x[j] - prevX) + abs(y[j] - prevY);
-                    prevX = x[j];
-                    prevY = y[j];
-                }
-            }
+        for (int j = 1; j < n; j++) {
+            if (j == skip) continue;
+            ttl += abs(x[j] - prevX) + abs(y[j] - prevY);
+            prevX = x[j];
+            prevY = y[j];
         }
 
         min_ans = min(min_ans, ttl);
     }
 
     cout << min_ans << "\n";
-
     return 0;
 }
