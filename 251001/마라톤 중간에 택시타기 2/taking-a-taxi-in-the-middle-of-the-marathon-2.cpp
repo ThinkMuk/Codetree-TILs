@@ -22,7 +22,7 @@ int main() {
         int prevX = 0; int prevY = 0;
 
         for(int j = 0; j < n; j++) {
-            if(j == 0 || j == n) {
+            if(j == 0 || j == n - 1) {
                 ttl += abs(x[j] - prevX) + abs(y[j] - prevY);
                 prevX = x[j];
                 prevY = y[j];
