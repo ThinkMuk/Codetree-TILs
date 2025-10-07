@@ -5,6 +5,7 @@ using namespace std;
 int board[19][19];
 int dy[4] = {-1, 0, 1, 1};
 int dx[4] = {1, 1, 1, 0};
+bool ans = false;
 
 bool inRange(int y, int x) {
     return (0 <= y && y < 19 && 0 <= x && x < 19);
@@ -57,5 +58,9 @@ int main() {
             }
         }
     }
+
+    if(ans == false)
+        cout << 0;
+        
     return 0;
 }
