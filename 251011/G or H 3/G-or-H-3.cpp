@@ -19,9 +19,9 @@ int main() {
     }
 
     // Please write your code here.
-    for(int i = 1; i <= max_idx - N; i++) {
+    for(int i = 1; i <= max_idx - K; i++) {
         int ttl = 0;
-        for(int j = 0; j <= N; j++) {
+        for(int j = 0; j <= K; j++) {
             if(x[i+j] == 'G')
                 ttl += 1;
             else if(x[i+j] == 'H')
