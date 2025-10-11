@@ -19,13 +19,23 @@ int main() {
     }
 
     // Please write your code here.
-    for(int i = 1; i <= max_idx; i++) {
+    if(max_idx - K <= 0) {
         int ttl = 0;
-        for (int j = 0; j <= K && i + j <= max_idx; j++) {
-            if (x[i+j] == 'G') ttl += 1;
-            else if (x[i+j] == 'H') ttl += 2;
+        for(int i = 1; i <= max_idx - K; i++) {
+            if(x[i] == 'G') ttl += 1;
+            else if(x[i] == 'H') ttl += 2;
         }
         ans = max(ans, ttl);
+    }
+    else {
+        for(int i = 1; i <= max_idx - K; i++) {
+            int ttl = 0;
+            for(int j = 0; j <= K; j++) {
+                if(x[i+j] == 'G') ttl += 1;
+                else if(x[i+j] == 'H') ttl += 2;
+            }
+            ans = max(ans, ttl);
+        }
     }
 
     cout << ans;
