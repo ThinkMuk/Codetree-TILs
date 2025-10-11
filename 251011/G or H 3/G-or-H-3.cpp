@@ -21,7 +21,7 @@ int main() {
     // Please write your code here.
     if(max_idx - K <= 0) {
         int ttl = 0;
-        for(int i = 1; i <= max_idx - K; i++) {
+        for(int i = 1; i <= max_idx; i++) {
             if(x[i] == 'G') ttl += 1;
             else if(x[i] == 'H') ttl += 2;
         }
