@@ -4,7 +4,7 @@
 using namespace std;
 
 int N, K;
-char x[101];
+char x[10001];
 
 int main() {
     cin >> N >> K;
