@@ -18,10 +18,10 @@ int main() {
     }
 
     // Please write your code here.
-    for (int i = N ; i < mx - N; i++) {
+    for (int i = K ; i < mx - K; i++) {
         int ttl = 0;
         ttl += candy[i];
-        for(int j = 1; j <= N; j++) {
+        for(int j = 1; j <= K; j++) {
             ttl += candy[i+j];
             ttl += candy[i-j];
         }
