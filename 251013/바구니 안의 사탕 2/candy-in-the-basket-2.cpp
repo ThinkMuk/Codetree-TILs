@@ -13,7 +13,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         int tmp1; int tmp2;
         cin >> tmp1 >> tmp2;
-        candy[tmp2] = tmp1;
+        candy[tmp2] += tmp1;
         mx = max(mx, tmp2);
     }
 
