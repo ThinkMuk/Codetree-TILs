@@ -18,13 +18,14 @@ int main() {
     }
 
     // Please write your code here.
-    for (int i = K; i <= mx - K; i++) {
+    for (int i = 1; i <= mx; i++) {
+        int left = max(1, i - K);
+        int right = min(mx, i + K);
         int ttl = 0;
-        ttl += candy[i];
-        for(int j = 1; j <= K; j++) {
-            ttl += candy[i+j];
-            ttl += candy[i-j];
-        }
+
+        for (int j = left; j <= right; j++)
+            ttl += candy[j];
+
         ans = max(ans, ttl);
     }
 
