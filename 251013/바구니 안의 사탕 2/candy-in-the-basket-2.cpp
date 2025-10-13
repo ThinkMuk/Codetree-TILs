@@ -18,7 +18,7 @@ int main() {
     }
 
     // Please write your code here.
-    for (int i = K ; i < mx - K; i++) {
+    for (int i = K; i <= mx - K; i++) {
         int ttl = 0;
         ttl += candy[i];
         for(int j = 1; j <= K; j++) {
