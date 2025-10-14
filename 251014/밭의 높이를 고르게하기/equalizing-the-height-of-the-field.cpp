@@ -17,7 +17,7 @@ int main() {
 
     int min_ans = INT_MAX;
     // Please write your code here.
-    for(int i = 0; i < N - T; i++) {
+    for(int i = 0; i <= N - T; i++) {
         int ttl = 0;
         for(int j = 0; j < T; j++) {
             ttl += cost[i + j];
