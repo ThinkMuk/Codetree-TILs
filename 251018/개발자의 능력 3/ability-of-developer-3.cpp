@@ -7,7 +7,7 @@ using namespace std;
 int abilities[6];
 
 int getDiff(int i, int j, int k) {
-    int num1 = i + j + k;
+    int num1 = abilities[i] + abilities[j] + abilities[k];
     int num2 = 0;
     for(int m = 0; m < 6; m++) 
         num2 += abilities[m];
