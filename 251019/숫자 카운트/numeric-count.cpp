@@ -28,28 +28,15 @@ int main() {
             int h2 = ((a[j] % 100) - (a[j] % 10)) / 10;
             int h3 = a[j] % 10;
 
-            int hint[3] = {h1, h2, h3}; bool usedHint[3] = {false, false, false};
-            int ans[3] = {d1, d2, d3}; bool usedAns[3] = {false, false, false};
-
             int cnt1 = 0;
-            for(int k = 0; k < 3; k++) {
-                if(ans[k] == hint[k]) {
-                    cnt1++;
-                    usedAns[k] = true;
-                    usedHint[k] = true;
-                }
-            }
+            if(d1 == h1) cnt1++;
+            if(d2 == h2) cnt1++;
+            if(d3 == h3) cnt1++;
 
             int cnt2 = 0;
-            for(int k = 0; k < 3; k++) {
-                if(usedAns[k]) continue;
-                for(int l = 0; l < 3; l++) {
-                    if(!usedHint[l] && l != k && ans[k] == hint[l]) {
-                        cnt2++; usedHint[l] = true;
-                        break;
-                    }
-                }
-            }
+            if((d1 != h1) && (d1 == h2 || d1 == h3)) cnt2++;
+            if((d2 != h2) && (d2 == h1 || d2 == h3)) cnt2++;
+            if((d3 != h3) && (d3 == h1 || d3 == h2)) cnt2++;
 
             if(cnt1 != b[j] || cnt2 != c[j]) {
                 valid = false;
