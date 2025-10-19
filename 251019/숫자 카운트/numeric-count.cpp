@@ -43,7 +43,7 @@ int main() {
             for(int k = 0; k < 3; k++) {
                 if(usedAns[k]) continue;
                 for(int l = 0; l < 3; l++) {
-                    if(!usedHint[l] && j != k && ans[l] == hint[k]) {
+                    if(!usedHint[l] && l != k && ans[l] == hint[k]) {
                         cnt2++; usedHint[k] = true;
                         break;
                     }
