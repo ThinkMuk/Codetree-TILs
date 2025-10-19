@@ -20,6 +20,7 @@ int main() {
         int d3 = i % 10;
 
         if(d1 == 0 || d2 == 0 || d3 == 0) continue;
+        if(d1 == d2 || d2 == d3 || d1 == d3) continue;
 
         bool valid = true;
         for(int j = 0; j < n; j++) {
