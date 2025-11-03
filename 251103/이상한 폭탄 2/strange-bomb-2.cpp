@@ -13,7 +13,7 @@ int main() {
     }
 
     // Please write your code here.
-    int biggest_num = 0;
+    int biggest_num = -1;
     for(int i = 0; i < N; i++) {
         bool boom = false;
         for(int j = 1; j <= K; j++) {
