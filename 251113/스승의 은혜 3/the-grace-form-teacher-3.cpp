@@ -22,7 +22,7 @@ int main() {
         v[i].first /= 2;
         for(int j = N - 1; j >= 0; --j) { //인원 카운트
             ttl += (v[j].first + v[j].second);
-            if(ttl >= B)
+            if(ttl > B)
                 break;
             cnt++;
         }
