@@ -14,28 +14,30 @@ int main() {
         cin >> P >> S;
         v.push_back({P, S});
     }
-    
-    sort(v.begin(), v.end(), greater<>());
+
     int ans = 0;
-    // Please write your code here.
-    for(int i = 0; i < N; i++) { //큰 순서로 하나씩 반값일때
-        int cnt = 0; int ttl = 0;
-        vector<pair<int,int>> temp = v;
-        temp[i].first /= 2;
-        sort(temp.begin(), temp.end());
-        
-        for(int j = 0; j < N; j++) { //인원 카운트
-            int cost = temp[j].first + temp[j].second;
-            if(ttl + cost > B) {
-                break;
+
+    for(int i = 0; i < N; i++) {
+        vector<int> costs;
+        for(int j = 0; j < N; j++) {
+            if(j == i) {
+                costs.push_back(v[j].first / 2 + v[j].second);
+            } else {
+                costs.push_back(v[j].first + v[j].second);
             }
+        }
+        sort(costs.begin(), costs.end());
+
+        int cnt = 0, ttl = 0;
+        for(int cost : costs) {
+            if(ttl + cost > B) break;
             ttl += cost;
             cnt++;
         }
+
         ans = max(ans, cnt);
     }
 
     cout << ans << "\n";
-
     return 0;
 }
