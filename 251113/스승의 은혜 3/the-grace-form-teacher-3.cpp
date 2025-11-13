@@ -26,7 +26,9 @@ int main() {
         
         for(int j = 0; j < N; j++) { //인원 카운트
             int cost = temp[j].first + temp[j].second;
-            if(ttl + cost > B) break;
+            if(ttl + cost > B) {
+                break;
+            }
             ttl += cost;
             cnt++;
         }
