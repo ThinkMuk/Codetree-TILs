@@ -25,8 +25,9 @@ int main() {
         sort(temp.begin(), temp.end());
         
         for(int j = 0; j < N; j++) { //인원 카운트
-            ttl += (temp[j].first + temp[j].second);
-            if(ttl > B) break;
+            int cost = temp[j].first + temp[j].second;
+            if(ttl + cost > B) break;
+            ttl += cost;
             cnt++;
         }
         ans = max(ans, cnt);
