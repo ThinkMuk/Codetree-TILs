@@ -32,8 +32,6 @@ int main() {
                     diffNum = true;
             }
         }
-
-
         
         if(duplicateCount == 2 && diffNum == true && mainNum == true)
             cnt++;
