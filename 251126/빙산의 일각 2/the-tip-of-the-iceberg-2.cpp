@@ -1,39 +1,29 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 using namespace std;
 
-int n;
-int h[100];
-
 int main() {
-    cin >> n;
-
-    int maxH = 0;
-    for (int i = 0; i < n; i++) {
-        cin >> h[i];
-        maxH = max(maxH, h[i]);
+    // Please write your code here.
+    int N;
+    vector<int> H;
+    cin >> N;
+    for(int i = 0; i < N; i++) {
+        int tmp; cin >> tmp;
+        H.push_back(tmp);
     }
 
-    // Please write your code here.
     int ans = 0;
-    for(int i = 0; i <= maxH; i++) {
-        int cnt = 0;
-        bool isGround = false;
-        for(int j = 0; j < n; j++) {
-            if(i >= h[j]) {
-                if(isGround) {
-                    cnt++;
-                }
-                isGround = false;
-            }
-            else
-                isGround = true;
-            if(j == n - 1 && isGround)
-                cnt++;
+    for(int i = 1; i <= N; i++) {
+        int ttl = 0;
+        if(H[0] > i)
+            ttl++;
+
+        for(int j = 1; j < N; j++) {
+            if(H[j] > i && H[j - 1] <= i)
+                ttl++;
         }
-        ans = max(ans, cnt);
+        ans = max(ans, ttl);
     }
 
     cout << ans << "\n";
