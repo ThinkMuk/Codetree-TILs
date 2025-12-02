@@ -18,7 +18,7 @@ int main() {
         arr[i] *= 2;
 
         for(int j = 0; j < N; j++) {
-            int remains[4] = {};
+            int remains[N - 1] = {};
             int cnt = 0;
 
             for(int k = 0; k < N; k++) {
@@ -33,7 +33,7 @@ int main() {
 
             min_diff = min(min_diff, sum_diff);
         }
-        
+
         arr[i] /= 2;
     }
 
