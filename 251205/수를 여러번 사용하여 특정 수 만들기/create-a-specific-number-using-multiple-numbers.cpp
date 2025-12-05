@@ -1,24 +1,26 @@
 #include <iostream>
 #include <algorithm>
+
 using namespace std;
 
+int A, B, C;
+
 int main() {
-    
-    // Please write your code here.
-    int A, B, C;
     cin >> A >> B >> C;
 
-    bool limit = false;
-    int mx = 0;
-    for(int i = 0; (A * i) < C; i++) {
-        for(int j = 0; (B * j) < C; j++) {
-            if((A*i) + (B*j) > C) {
-                limit = true; break;
-            }
-            mx = max(mx, (A*i) + (B*j));
-        }
+    // Please write your code here.
+    int ans = 0;
+
+    for(int i = 0; i * A <= C; i++) {
+        int cnt = A * i;
+
+        int num_b = (C - cnt) / B;
+
+        cnt += num_b * B;
+        ans = max(ans, cnt);
     }
 
-    cout << mx << "\n";
+    cout << ans << "\n";
+
     return 0;
 }
