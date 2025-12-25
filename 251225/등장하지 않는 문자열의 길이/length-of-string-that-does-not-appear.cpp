@@ -1,31 +1,30 @@
 #include <iostream>
-#include <set>
+#include <map>
 using namespace std;
 
 int main() {
-    int T; cin >> T;
-    string N; cin >> N;
-    set<string> s;
-    char firstChar;
-
-    string tmp = "";
-    int idx = 0;
-    for(char c : N) {
-        if(idx == 0) firstChar = c;
-        tmp += c;
-        if(idx != 0 && firstChar == c) break;
-        if(!s.count(tmp)) s.insert(tmp);
-        idx++;
+    int N; cin >> N;
+    string S; cin >> S;
+    
+    for(int len = 1; len <= N; len++) {
+        map<string, int> cnt;
+        bool duplicate = false;
+        
+        for(int i = 0; i + len <= N; i++) {
+            string sub = S.substr(i, len);
+            cnt[sub]++;
+            if(cnt[sub] >= 2) {
+                duplicate = true;
+                break;
+            }
+        }
+        
+        if(!duplicate) {
+            cout << len << "\n";
+            return 0;
+        }
     }
-
-    string tmp2 = "";
-    int ans = 0;
-    for(int i = idx; i < T; i++) {
-        tmp2 += N[i];
-        if(s.count(tmp2)) ans++;
-    }
-
-    cout << ans + 1 << "\n";
-
+    
+    cout << N + 1 << "\n";
     return 0;
 }
