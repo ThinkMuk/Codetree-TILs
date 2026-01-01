@@ -12,8 +12,7 @@ int main() {
         v.push_back({a, b});
     }
 
-    int ans = INT_MAX;
-    for(int i = 1; i <= 10; i++) {
+    for(int i = 1; i <= 10000; i++) {
         int num = i * 2;
         bool isAns = true;
         for(auto [a, b] : v) {
@@ -24,10 +23,9 @@ int main() {
             num *= 2;
         }
         if(isAns) {
-            ans = min(ans, i);
+            cout << i << "\n";
+            break;
         }
     }
-
-    cout << ans << "\n";
     return 0;
 }
