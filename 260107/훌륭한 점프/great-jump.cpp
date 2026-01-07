@@ -18,7 +18,7 @@ int main() {
     for(int i = 1; i <= N; i++) {
         for(int j = 1; i + j <= N && j <= K; j++) {
             int nxt = i + j;
-            dp[nxt] = min(dp[nxt], max(v[i], v[nxt]));
+            dp[nxt] = min(dp[nxt], max(dp[i], v[nxt]));
         }
     }
     cout << dp[N] << "\n";
