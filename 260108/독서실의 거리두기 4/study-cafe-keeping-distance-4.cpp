@@ -7,27 +7,25 @@ int main() {
     int N; cin >> N;
     string seat; cin >> seat;
 
-    //가장 가까운 두 사람간의 거리를 최대로
-    int ans = INT_MAX;
+    int ans = 0;
     for(int i = 0; i < N; i++) {
         if(seat[i] == '0') {
             seat[i] = '1';
-            for(int j = 0; j < N; j++) {
+            for(int j = i + 1; j < N; j++) {
                 if(seat[j] == '0') {
                     seat[j] = '1';
-                    int cnt = 0, tmp = 0;
-                    bool firstAppear = false;
+                    
+                    int minDist = INT_MAX;
+                    int lastOne = -1;
                     for(int k = 0; k < N; k++) {
                         if(seat[k] == '1') {
-                            firstAppear = true;
-                            if(cnt != 0)
-                                tmp = max(tmp, cnt);
-                            cnt = 0;
+                            if(lastOne != -1)
+                                minDist = min(minDist, k - lastOne);
+                            lastOne = k;
                         }
-                        else
-                            if(firstAppear) cnt++;
                     }
-                    ans = min(ans, tmp);
+                    
+                    ans = max(ans, minDist);
                     seat[j] = '0';
                 }
             }
