@@ -15,14 +15,17 @@ int main() {
             for(int j = 0; j < N; j++) {
                 if(seat[j] == '0') {
                     seat[j] = '1';
-                    int cnt = 0; int tmp = 0;
+                    int cnt = 0, tmp = 0;
+                    bool firstAppear = false;
                     for(int k = 0; k < N; k++) {
-                        if(seat[k] == '1' && cnt != 0) {
-                            tmp = max(tmp, cnt);
+                        if(seat[k] == '1') {
+                            firstAppear = true;
+                            if(cnt != 0)
+                                tmp = max(tmp, cnt);
                             cnt = 0;
                         }
                         else
-                            cnt++;
+                            if(firstAppear) cnt++;
                     }
                     ans = min(ans, tmp);
                     seat[j] = '0';
