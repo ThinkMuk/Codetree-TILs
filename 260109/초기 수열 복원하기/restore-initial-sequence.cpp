@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+
+#defind MAX_N 1000;
 using namespace std;
 
 int main() {
@@ -15,7 +17,7 @@ int main() {
 
     for(int i = 1; i < firstNum; i++) {
         vector<int> ans;
-        vector<bool> exist(N + 1, false);
+        vector<bool> exist(MAX_N + 1, false);
         bool isSeq = true;
         ans.push_back(i); exist[i] = true;
         for(int j = 0; j < N - 1; j++) {
