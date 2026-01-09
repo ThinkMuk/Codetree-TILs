@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <set>
 using namespace std;
 
 int main() {
@@ -16,17 +15,17 @@ int main() {
 
     for(int i = 1; i < firstNum; i++) {
         vector<int> ans;
-        set<int> s;
+        vector<bool> exist(N + 1, false);
         bool isSeq = true;
-        ans.push_back(i); s.insert(i);
+        ans.push_back(i); exist[i] = true;
         for(int j = 0; j < N - 1; j++) {
             int nxt = v[j] - ans[j];
-            if(nxt <= 0 || s.count(nxt)) {
+            if(nxt <= 0 || exist[nxt]) {
                 isSeq = false;
                 break;
             }
             else {
-                ans.push_back(nxt); s.insert(nxt);
+                ans.push_back(nxt); exist[nxt] = true;
             }
         }
         if(isSeq) {
