@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#defind MAX_N 1000;
+#define MAX_N 1000;
 using namespace std;
 
 int main() {
