@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
-
-#define MAX_N 1000
+#include <unordered_set>
 using namespace std;
 
 int main() {
@@ -17,17 +16,17 @@ int main() {
 
     for(int i = 1; i < firstNum; i++) {
         vector<int> ans;
-        vector<bool> exist(MAX_N + 1, false);
+        unordered_set<int> s;
         bool isSeq = true;
-        ans.push_back(i); exist[i] = true;
+        ans.push_back(i); s.insert(i);
         for(int j = 0; j < N - 1; j++) {
             int nxt = v[j] - ans[j];
-            if(nxt <= 0 || exist[nxt]) {
+            if(nxt <= 0 || s.count(nxt)) {
                 isSeq = false;
                 break;
             }
             else {
-                ans.push_back(nxt); exist[nxt] = true;
+                ans.push_back(nxt); s.insert(nxt);
             }
         }
         if(isSeq) {
