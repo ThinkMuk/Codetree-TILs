@@ -29,6 +29,7 @@ int main() {
         }
     }
 
-    cout << ans << "\n";
+    if (maxCnt == 0) cout << 0 << "\n"
+    else cout << ans << "\n";
     return 0;
 }
