@@ -22,9 +22,10 @@ int main() {
         for(int j = 0; j < bomb.size() - 1; j++) {
             if(bomb[j] + K >= bomb[j + 1]) tmpCnt++;
         }
-        if(maxCnt < tmpCnt) {
+        if(maxCnt <= tmpCnt) {
+            if(maxCnt == tmpCnt) ans = max(ans, val);
+            else ans = val;
             maxCnt = tmpCnt;
-            ans = val;
         }
     }
 
