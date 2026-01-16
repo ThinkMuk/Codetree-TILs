@@ -7,11 +7,17 @@ vector<int> v;
 int N, L;
 
 bool isValid(int val) {
-    int cnt = 0;
-    for(int i : v) {
-        if(val <= i) cnt++;
+    int success = 0;
+    int near = 0;
+
+    for(int t : v) {
+        if(t >= val) success++;
+        else if (t + 1 >= val) near++;
     }
-    return val <= cnt;
+
+    int nearVal = (near > L) ? L : near;
+
+    return val <= success + nearVal;
 }
 
 int main() {
@@ -24,13 +30,9 @@ int main() {
     }
 
     int maxNum = 0;
-    for(int i = 0; i < v.size(); i++) {
-        int val = v[i] + ((L > 0) ? 1 : 0);
-
-        v[i] = val;
-        if(isValid(val))
-            maxNum = max(maxNum, val);
-        v[i] = val - 1;
+    for(int i = 0; i <= 100; i++) {
+        if(isValid(i))
+            maxNum = i;
     }
 
     cout << maxNum << "\n";
