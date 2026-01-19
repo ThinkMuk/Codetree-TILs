@@ -21,8 +21,10 @@ int main() {
         int ttl = 0;
         for(int j = 0; j < N; j++) {
             int diff = 0;
-            if(low > v[j] || v[j] > hi)
-                diff = min(abs(v[j] - low), abs(v[j] - hi));
+            if(low > v[j])
+                diff = low - v[j];
+            else if (v[j] > hi)
+                diff = v[j] - hi;
             ttl += diff;
         }
         ans = min(ans, ttl);
