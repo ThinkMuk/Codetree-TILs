@@ -8,23 +8,25 @@ int main() {
     // Please write your code here.
     int N, K; cin >> N >> K;
     vector<int> v;
+    vector<int> candidates;
     for(int i = 0; i < N; i++) {
         int tmp; cin >> tmp;
         v.push_back(tmp);
+        candidates.push_back(tmp);
+        candidates.push_back(tmp - K);
     }
     
     int ans = INT_MAX;
-    for(int i = 0; i < N; i++) {
-        int low = v[i];
+    for(int low : candidates) {
         int hi = low + K;
 
         int ttl = 0;
-        for(int j = 0; j < N; j++) {
+        for(int i = 0; i < N; i++) {
             int diff = 0;
-            if(low > v[j])
-                diff = low - v[j];
-            else if (v[j] > hi)
-                diff = v[j] - hi;
+            if(low > v[i])
+                diff = low - v[i];
+            else if (v[i] > hi)
+                diff = v[i] - hi;
             ttl += diff;
         }
         ans = min(ans, ttl);
