@@ -20,7 +20,9 @@ int main() {
 
         int ttl = 0;
         for(int j = 0; j < N; j++) {
-            int diff = min(abs(v[j] - low), abs(v[j] - hi));
+            int diff = 0;
+            if(low > v[j] || v[j] > hi)
+                diff = min(abs(v[j] - low), abs(v[j] - hi));
             ttl += diff;
         }
         ans = min(ans, ttl);
