@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <climits>
 using namespace std;
 
 int main() {
@@ -11,23 +11,20 @@ int main() {
         int a,b; cin >> a >> b;
         v.push_back({a,b});
     }
-    sort(v.begin(),v.end());
 
     bool isSuccess = false;
     for(int i = 0; i < N; i++) {
-        int stk = 0; int cur = 0;
-        priority_queue<int, vector<int>, greater<>> pq;
-
+        int max_x1 = 0;
+        int min_x2 = INT_MAX;
         for(int j = 0; j < N; j++) {
             if(i == j) continue;
-            pq.push(v[j].second);
-            if(!pq.empty() && cur > pq.top()) {
-                stk--; pq.pop();
-            }
-            cur = v[j].first;
-            stk++;
-            if(stk == N - 1) isSuccess = true;
+
+            //시작점 중 가장 뒤에 있는 좌표, 끝점 중 가장 앞에 있는 좌표
+            max_x1 = max(max_x1, v[j].first);
+            min_x2 = min(min_x2, v[j].second);
         }
+
+        if(min_x2 >= max_x1) isSuccess = true;
     }
     if(isSuccess)
         cout << "Yes\n";
