@@ -20,11 +20,11 @@ int main() {
 
         for(int j = 0; j < N; j++) {
             if(i == j) continue;
-            pq.push(v[i].second);
-            if(cur > pq.top()) {
+            pq.push(v[j].second);
+            if(!pq.empty() && cur > pq.top()) {
                 stk--; pq.pop();
             }
-            cur = v[i].first;
+            cur = v[j].first;
             stk++;
             if(stk == N - 1) isSuccess = true;
         }
