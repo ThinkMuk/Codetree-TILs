@@ -23,7 +23,6 @@ int main() {
     }
 
     int remain = N - v[p - 1].second;
-    cout << remain << "\n";
     for(int i = p - 1; i < N; i++) {
         if(!m[v[i].first]) {
             m[v[i].first] = true;
@@ -31,7 +30,7 @@ int main() {
         }
     }
 
-    if(remain == 0) {
+    if(remain == 0 || v[p - 1].second == 0) {
         return 0;
     }
     else {
