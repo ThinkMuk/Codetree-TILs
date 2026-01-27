@@ -37,6 +37,7 @@ int main() {
             m[v[i - 1].first] = true;
             remain--;
         }
+        else break;
     }
 
     for(auto iter : m)
