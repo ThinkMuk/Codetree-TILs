@@ -22,24 +22,26 @@ int main() {
         v.push_back({c, u});
     }
 
+    if(v[p - 1].second == 0) return 0;
+
     int remain = N - v[p - 1].second;
-    for(int i = p - 1; i < N; i++) {
+    for(int i = p - 1; i < M; i++) {
         if(!m[v[i].first]) {
             m[v[i].first] = true;
             remain--;
         }
     }
 
-    if(remain == 0 || v[p - 1].second == 0) {
-        return 0;
-    }
-    else {
-        for(auto iter : m) {
-            if(!iter.second)
-                cout << iter.first << " ";
+    for(int i = p - 1; i > 0; --i) {
+        if(v[i].second == v[i - 1].second) {
+            m[v[i - 1].first] = true;
+            remain--;
         }
-        cout << "\n";
     }
+
+    for(auto iter : m)
+        if(!iter.second)
+            cout << iter.first << " ";
 
     return 0;
 }
