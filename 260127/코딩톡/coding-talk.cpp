@@ -11,10 +11,8 @@ int main() {
     cin >> N >> M >> p;
 
     char user = 'A';
-    for(int i = 0; i < N; i++) {
-        m[user] = false;
-        user++;
-    }
+    for(int i = 0; i < N; i++)
+        m[user++] = false;
 
     for(int i = 0; i < M; i++) {
         char c; int u;
@@ -24,19 +22,11 @@ int main() {
 
     if(v[p - 1].second == 0) return 0;
 
-    int remain = N - v[p - 1].second;
-    for(int i = p - 1; i < M; i++) {
-        if(!m[v[i].first]) {
-            m[v[i].first] = true;
-            remain--;
-        }
-    }
+    for(int i = p - 1; i < M; i++) m[v[i].first] = true;
 
     for(int i = p - 1; i > 0; --i) {
-        if(v[i].second == v[i - 1].second) {
+        if(v[i].second == v[i - 1].second) 
             m[v[i - 1].first] = true;
-            remain--;
-        }
         else break;
     }
 
