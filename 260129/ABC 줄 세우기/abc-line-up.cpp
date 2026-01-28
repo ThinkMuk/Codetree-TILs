@@ -1,34 +1,31 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
+
+#define MAX_N 26
+
+int N;
+char arr[MAX_N + 1];
+int ans = 0;
 
 int main() {
     // Please write your code here.
-    int N; cin >> N;
-    vector<char> v;
-    for(int i = 0; i < N; i++) {
-        char c; cin >> c;
-        v.push_back(c);
-    }
+    cin >> N;
+    for(int i = 1; i <= N; i++)
+        cin >> arr[i];
 
-    int cnt = 0;
-    bool isOrdered = false;
-    while(!isOrdered) {
-        int i = 0;
-        while(i + 1 < N) {
-            if(v[i] <= v[i + 1]) i++;
-            else {
-                int tmp = i;
-                while(v[tmp] > v[tmp + 1] && tmp + 1 < N) {
-                    swap(v[tmp],v[tmp + 1]);
-                    tmp++; cnt++;
-                }
-                break;
-            }
-            if(i + 1 >= N) isOrdered = true;
+    for(int i = 1; i <= N; i++) {
+        char target = 'A' + i - 1;
+
+        int idx = 0;
+        for(int j = 1; j <= N; j++)
+            if(arr[j] == target) idx = j;
+        
+        for(int j = idx - 1; j >= i; j--) {
+            swap(arr[j], arr[j + 1]);
+            ans++;
         }
     }
 
-    cout << cnt << "\n";
+    cout << ans;
     return 0;
 }
