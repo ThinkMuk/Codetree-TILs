@@ -19,15 +19,24 @@ int main() {
     sort(pos.begin(),pos.end());
     sort(neg.begin(),neg.end(),greater<>());
 
-    int num1 = INT_MIN; int num2 = INT_MIN;
-    if(pos.size() > 2) {
-        num1 = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
+    int ans;
+    if(pos.size() + neg.size() == 3) {
+        if(pos.size() == 2)
+            ans = pos[pos.size()-1] * pos[pos.size()-2] * neg[neg.size()-1];
+        else
+            ans = pos[pos.size()-1] * neg[pos.size()-1] * neg[neg.size()-2];
     }
-    if(!pos.empty() && neg.size() > 1) {
-        num2 = pos[pos.size()-1] * neg[neg.size()-1] * neg[neg.size()-2];
+    else {
+        int num1 = INT_MIN; int num2 = INT_MIN;
+        if(pos.size() > 2) {
+            num1 = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
+        }
+        if(!pos.empty() && neg.size() > 1) {
+            num2 = pos[pos.size()-1] * neg[neg.size()-1] * neg[neg.size()-2];
+        }
+        ans = max(num1, num2);
     }
 
-    int ans = max(num1, num2);
     cout << ans << "\n";
     return 0;
 }
