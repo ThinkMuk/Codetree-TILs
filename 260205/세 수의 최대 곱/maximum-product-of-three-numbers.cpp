@@ -39,7 +39,7 @@ int main() {
         }
         else {
             if(pos.empty())
-                ans = neg[neg.size()-1] * neg[neg.size()-2] * neg[neg.size()-3];
+                ans = neg[0] * neg[1] * neg[2];
             else
                 ans = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
         }
