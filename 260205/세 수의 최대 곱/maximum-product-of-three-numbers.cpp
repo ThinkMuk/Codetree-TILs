@@ -19,9 +19,6 @@ int main() {
     sort(pos.begin(),pos.end());
     sort(neg.begin(),neg.end(),greater<>());
 
-    if(pos.size() + neg.size() == 3) {
-        for(int a : pos)
-    }
     int num1 = INT_MIN; int num2 = INT_MIN;
     if(pos.size() > 2) {
         num1 = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
