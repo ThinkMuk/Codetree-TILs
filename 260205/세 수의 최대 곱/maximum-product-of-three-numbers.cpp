@@ -28,13 +28,21 @@ int main() {
     }
     else {
         int num1 = INT_MIN; int num2 = INT_MIN;
-        if(pos.size() > 2) {
-            num1 = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
+        if(!pos.empty() && !neg.empty()) {
+            if(pos.size() > 2) {
+                num1 = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
+            }
+            if(!pos.empty() && neg.size() > 1) {
+                num2 = pos[pos.size()-1] * neg[neg.size()-1] * neg[neg.size()-2];
+            }
+            ans = max(num1, num2);
         }
-        if(!pos.empty() && neg.size() > 1) {
-            num2 = pos[pos.size()-1] * neg[neg.size()-1] * neg[neg.size()-2];
+        else {
+            if(pos.empty())
+                ans = neg[neg.size()-1] * neg[neg.size()-2] * neg[neg.size()-3];
+            else
+                ans = pos[pos.size()-1] * pos[pos.size()-2] * pos[pos.size()-3];
         }
-        ans = max(num1, num2);
     }
 
     cout << ans << "\n";
