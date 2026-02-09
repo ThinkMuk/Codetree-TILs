@@ -5,38 +5,47 @@
 using namespace std;
 
 int main() {
-    // Please write your code here.
-    int N; cin >> N;
-    vector<pair<int,int>> v;
-
+    int N;
+    cin >> N;
+    
+    vector<pair<int, int>> v(N);
     for(int i = 0; i < N; i++) {
-        int a,b; cin >> a >> b;
-        v.push_back({a,b});
+        cin >> v[i].first >> v[i].second;
     }
-    sort(v.begin(),v.end());
-
+    
     int ans = INT_MAX;
-    for(int i = 0; i < N; i++) {
-        bool isComplete = true;
-        int minNum = INT_MAX;
-        int maxNum = INT_MIN;
-        int prevNum = -1;
-
-        for(int j = 0; j < N; j++) {
-            if(i == j) continue;
-            minNum = min(minNum, v[j].first);
-            maxNum = max(maxNum, v[j].second);
-            if(prevNum != -1 && prevNum < v[j].first - 1) {
-                isComplete = false;
-                break;
-            }
-            prevNum = max(prevNum, v[j].second);
-        }
-        if(isComplete)
-            ans = min(ans, maxNum - minNum);
+    
+    //가장 작은 시작점 제거
+    int min_start_idx = 0;
+    for(int i = 1; i < N; i++) {
+        if(v[i].first < v[min_start_idx].first)
+            min_start_idx = i;
     }
-
+    
+    int minVal = INT_MAX, maxVal = INT_MIN;
+    for(int i = 0; i < N; i++) {
+        if(i == min_start_idx) continue;
+        minVal = min(minVal, v[i].first);
+        maxVal = max(maxVal, v[i].second);
+    }
+    ans = min(ans, maxVal - minVal);
+    
+    //가장 큰 끝점 제거
+    int max_end_idx = 0;
+    for(int i = 1; i < N; i++) {
+        if(v[i].second > v[max_end_idx].second)
+            max_end_idx = i;
+    }
+    
+    minVal = INT_MAX;
+    maxVal = INT_MIN;
+    for(int i = 0; i < N; i++) {
+        if(i == max_end_idx) continue;
+        minVal = min(minVal, v[i].first);
+        maxVal = max(maxVal, v[i].second);
+    }
+    ans = min(ans, maxVal - minVal);
+    
     cout << ans << "\n";
-
     return 0;
 }
