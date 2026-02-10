@@ -24,7 +24,7 @@ int main() {
             }
         }
     }
-    int maxArea = 0;
+    int maxArea = -1;
 
     for(int row = 1; row <= N; row++) {
         stack<int> st;
