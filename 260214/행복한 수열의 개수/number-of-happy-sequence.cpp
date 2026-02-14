@@ -14,7 +14,7 @@ int main() {
     //행 기준 검사
     for(int i = 0; i < N; i++) {
         int cnt = 1;
-        bool isHappy = false;
+        bool isHappy = (cnt >= M);
         for(int j = 1; j < N; j++) {
             if(arr[i][j] == arr[i][j-1])
                 cnt++;
@@ -28,7 +28,7 @@ int main() {
     //열 기준 검사
     for(int i = 0; i < N; i++) {
         int cnt = 1;
-        bool isHappy = false;
+        bool isHappy = (cnt >= M);
         for(int j = 1; j < N; j++) {
             if(arr[j][i] == arr[j-1][i])
                 cnt++;
