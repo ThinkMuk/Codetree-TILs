@@ -14,31 +14,29 @@ int main() {
     //행 기준 검사
     for(int i = 0; i < N; i++) {
         int cnt = 1;
-        int prevNum = -1;
-        for(int j = 0; j < N; j++) {
-            if(prevNum == arr[i][j])
+        bool isHappy = false;
+        for(int j = 1; j < N; j++) {
+            if(arr[i][j] == arr[i][j-1])
                 cnt++;
-            else {
-                prevNum = arr[i][j];
+            else
                 cnt = 1;
-            }
+            if(cnt >= M) isHappy = true;
         }
-        if(cnt >= M) ans++;
+        if(isHappy) ans++;
     }
 
     //열 기준 검사
     for(int i = 0; i < N; i++) {
         int cnt = 1;
-        int prevNum = -1;
-        for(int j = 0; j < N; j++) {
-            if(prevNum == arr[j][i])
+        bool isHappy = false;
+        for(int j = 1; j < N; j++) {
+            if(arr[j][i] == arr[j-1][i])
                 cnt++;
-            else {
-                prevNum = arr[j][i];
+            else
                 cnt = 1;
-            }
+            if(cnt >= M) isHappy = true;
         }
-        if(cnt >= M) ans++;
+        if(isHappy) ans++;
     }
 
     cout << ans << "\n";
