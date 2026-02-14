@@ -18,8 +18,10 @@ int main() {
         for(int j = 0; j < N; j++) {
             if(prevNum == arr[i][j])
                 cnt++;
-            else
+            else {
                 prevNum = arr[i][j];
+                cnt = 1;
+            }
         }
         if(cnt >= M) ans++;
     }
@@ -31,8 +33,10 @@ int main() {
         for(int j = 0; j < N; j++) {
             if(prevNum == arr[j][i])
                 cnt++;
-            else
+            else {
                 prevNum = arr[j][i];
+                cnt = 1;
+            }
         }
         if(cnt >= M) ans++;
     }
