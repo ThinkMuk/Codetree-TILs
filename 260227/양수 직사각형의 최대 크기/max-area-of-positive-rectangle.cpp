@@ -7,7 +7,7 @@ bool isPositive(int syIdx, int sxIdx, int eyIdx, int exIdx) {
     bool complete = true;
     for(int i = syIdx; i <= eyIdx; i++) {
         for(int j = sxIdx; j <= exIdx; j++) {
-            if(arr[i][j] < 0) {complete = false; break;}
+            if(arr[i][j] <= 0) {complete = false; break;}
         }
     }
     return complete;
