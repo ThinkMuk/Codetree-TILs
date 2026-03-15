@@ -13,10 +13,10 @@ int main() {
 
     int startIdx = K;
     int endIdx = K + M - 1;
-
-    bool possible = true;
+    
     int minHeight = 0;
     for(int i = 1; i <= N; i++) {
+        bool possible = true;
         for(int j = startIdx; j <= endIdx; j++) {
             if(arr[i][j] == 1)
                 possible = false;
