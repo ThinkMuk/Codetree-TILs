@@ -3,7 +3,7 @@ using namespace std;
 
 int arr[101][101];
 int dy[] = {1, 0, -1, 0}; //아래 왼 위 오
-int dx[] = {0, -1, 0, 1}; //아래 왼 위 오
+int dx[] = {0, -1, 0, 1};
 int N;
 int dist;
 
@@ -27,6 +27,19 @@ bool inRange(int y, int x) {
     return (1 <= y && y <= N && 1 <= x && x <= N);
 }
 
+int simulate(int startR, int startC, int dir) {
+    int time = 1;
+    int r = startR, c = startC;
+    dist = dir;
+    while(inRange(r, c)) {
+        if(arr[r][c] == 1) changeDistOne();
+        else if(arr[r][c] == 2) changeDistTwo();
+        r += dy[dist]; c += dx[dist];
+        time++;
+    }
+    return time;
+}
+
 int main() {
     cin >> N;
     for(int i = 1; i <= N; i++)
@@ -34,28 +47,18 @@ int main() {
             cin >> arr[i][j];
 
     int maxTime = 0;
-    int startY = 1; int startX = 1;
-    //4방향 진행
-    for(int i = 0; i < 4; i++) {
-        int d = (3 + i) % 4;
-        for(int j = 1; j < N; j++) {
-            int time = 1;
-            int r = startY; int c = startX;
-            dist = i;
-            while(inRange(r,c)) {
-                if(arr[r][c] == 1) changeDistOne();
-                else if (arr[r][c] == 2) changeDistTwo();
-                r += dy[dist]; c += dx[dist];
-                time++;
-            }
-            maxTime = max(maxTime, time);
-            startX += dx[d];
-            startY += dy[d];
-        }
-    }
+
+    for(int j = 1; j <= N; j++)
+        maxTime = max(maxTime, simulate(1, j, 0));
+
+    for(int i = 1; i <= N; i++)
+        maxTime = max(maxTime, simulate(i, N, 1));
+
+    for(int j = 1; j <= N; j++)
+        maxTime = max(maxTime, simulate(N, j, 2));
+
+    for(int i = 1; i <= N; i++)
+        maxTime = max(maxTime, simulate(i, 1, 3));
 
     cout << maxTime << "\n";
-    // 1번은 /
-    // 2번은 \
-
 }
