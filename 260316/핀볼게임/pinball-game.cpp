@@ -38,7 +38,7 @@ int main() {
     //4방향 진행
     for(int i = 0; i < 4; i++) {
         int d = (3 + i) % 4;
-        for(int j = 1; j <= N; j++) {
+        for(int j = 1; j < N; j++) {
             int time = 1;
             int r = startY; int c = startX;
             dist = i;
@@ -48,9 +48,9 @@ int main() {
                 r += dy[dist]; c += dx[dist];
                 time++;
             }
+            maxTime = max(maxTime, time);
             startX += dx[d];
             startY += dy[d];
-            maxTime = max(maxTime, time);
         }
     }
 
