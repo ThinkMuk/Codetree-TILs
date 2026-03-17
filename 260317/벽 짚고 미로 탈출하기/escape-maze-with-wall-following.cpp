@@ -4,15 +4,15 @@ using namespace std;
 int N;
 char arr[101][101];
 
-int dy[] = {0, 1, 0, -1}; //오 아래 왼 위
-int dx[] = {1, 0, -1, 0};
+int dr[] = {0, 1, 0, -1}; //오 아래 왼 위
+int dc[] = {1, 0, -1, 0};
 
-bool inRange(int y, int x) {
-    return (1 <= y && y <= N && 1 <= x && x <= N);
+bool inRange(int r, int c) {
+    return (1 <= r && r <= N && 1 <= c && c <= N);
 }
 
-bool isWall(int y, int x) {
-    return inRange(y, x) && arr[y][x] == '#';
+bool isWall(int r, int c) {
+    return inRange(r, c) && arr[r][c] == '#';
 }
 
 // 1 앞이 벽 -> 반시계 회전 (이동 없음)
@@ -30,21 +30,21 @@ int main() {
     int d = 0;
 
     for(int step = 0; step < N * N * 8; step++) {
-        int ny = r + dy[d], nx = c + dx[d];
+        int nr = r + dr[d], nc = c + dc[d];
 
-        if(isWall(ny, nx)) {
+        if(isWall(nr, nc)) {
             d = (d + 3) % 4; // 반시계 90도 회전
         }
-        else if(!inRange(ny, nx)) {
+        else if(!inRange(nr, nc)) {
             cnt++;
             cout << cnt << "\n";
             return 0;
         }
         else {
-            r = ny; c = nx;
+            r = nr; c = nc;
             cnt++;
             // 이동 후 오른쪽에 벽이 없으면 시계 90도 회전
-            if(!isWall(r + dy[(d+1)%4], c + dx[(d+1)%4]))
+            if(!isWall(r + dr[(d+1)%4], c + dc[(d+1)%4]))
                 d = (d + 1) % 4;
         }
     }
