@@ -21,7 +21,7 @@ bool isWall(int y, int x) {
 
 int main() {
     cin >> N;
-    int c, r; cin >> c >> r;
+    int r, c; cin >> r >> c;
     for(int i = 1; i <= N; i++)
         for(int j = 1; j <= N; j++)
             cin >> arr[i][j];
