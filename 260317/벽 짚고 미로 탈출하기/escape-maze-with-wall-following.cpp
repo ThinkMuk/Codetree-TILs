@@ -15,6 +15,10 @@ bool isWall(int y, int x) {
     return inRange(y, x) && arr[y][x] == '#';
 }
 
+// 1 앞이 벽 -> 반시계 회전 (이동 없음)
+// 2 앞이 격자 밖 -> 탈출
+// 3 앞이 빈 칸 -> 이동(cnt++) 후 오른쪽에 벽이 없으면 시계 회전
+
 int main() {
     cin >> N;
     int c, r; cin >> c >> r;
@@ -24,45 +28,24 @@ int main() {
 
     int cnt = 0;
     int d = 0;
-    int maxStep = N * N * 4;
 
-    for(int step = 0; step < maxStep; step++) {
+    for(int step = 0; step < N * N * 8; step++) {
         int ny = r + dy[d], nx = c + dx[d];
 
-        if(isWall(ny, nx)) { //앞이 벽 -> 반시계 90 회전
-            d = (d + 3) % 4;
+        if(isWall(ny, nx)) {
+            d = (d + 3) % 4; // 반시계 90도 회전
         }
-        else if(!inRange(ny, nx)) { // 1.격자 밖 -> 탈출
+        else if(!inRange(ny, nx)) {
             cnt++;
-            cout << cnt << endl;
+            cout << cnt << "\n";
             return 0;
         }
         else {
-            // 이동 가능한 빈 칸
-            // 이동했다고 가정한 위치(ny, nx)에서 오른쪽 체크
-            int rd = (d + 1) % 4; // 오른쪽 방향 (시계 90도)
-            if(isWall(ny + dy[rd], nx + dx[rd])) {
-                // 2. 오른쪽에 벽 있음 -> 그냥 이동
-                r = ny; c = nx;
-                cnt++;
-            }
-            else {
-                // 3. 오른쪽에 벽 없음
-                // 한 칸 이동
-                r = ny; c = nx;
-                cnt++;
-                // 시계 90도 회전
+            r = ny; c = nx;
+            cnt++;
+            // 이동 후 오른쪽에 벽이 없으면 시계 90도 회전
+            if(!isWall(r + dy[(d+1)%4], c + dx[(d+1)%4]))
                 d = (d + 1) % 4;
-                // 한 칸 더 전진
-                ny = r + dy[d]; nx = c + dx[d];
-                if(!inRange(ny, nx)) {
-                    cnt++;
-                    cout << cnt << "\n";
-                    return 0;
-                }
-                r = ny; c = nx;
-                cnt++;
-            }
         }
     }
 
