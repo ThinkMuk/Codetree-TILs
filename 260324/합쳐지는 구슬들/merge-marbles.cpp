@@ -48,26 +48,32 @@ int main() {
                 // 벽에 부딪히면 방향만 반전, 위치는 그대로 (1초 소모)
                 m.d = revDir(m.d);
             } else {
+                // 범위 안이면 실제로 이동
                 m.r = nr;
                 m.c = nc;
             }
         }
 
-        // 2) 합치기 - map 그룹핑
+        // 2) 합치기 - map 사용
         map<pair<int,int>, vector<int>> grid;
         for(int i = 0; i < M; i++) {
             if(!marbles[i].alive) continue;
+            // 살아있는 구슬만 자기 좌표에 등록
             grid[{marbles[i].r, marbles[i].c}].push_back(i);
         }
         for(auto& [pos, idxs] : grid) {
-            if(idxs.size() <= 1) continue;
+            if(idxs.size() <= 1) continue; // 1개 이하면 충돌 없음
+
+            // 오름차순으로 push했으므로 마지막이 가장 큰 idx = 가장 큰 id
             int best = idxs.back();
+
+            // 같은 칸의 모든 구슬 무게를 합산
             int totalW = 0;
             for(int idx : idxs) {
                 totalW += marbles[idx].w;
-                if(idx != best) marbles[idx].alive = false;
+                if(idx != best) marbles[idx].alive = false; // best 외에는 제거
             }
-            marbles[best].w = totalW;
+            marbles[best].w = totalW; //best 합산 무게로 적용
         }
     }
 
@@ -78,6 +84,6 @@ int main() {
             maxW = max(maxW, m.w);
         }
     }
-    cout << cnt << " " << maxW << endl;
+    cout << cnt << " " << maxW << "\n";
     return 0;
 }
