@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <map>
-using namespace std;
+#include <set>
 using namespace std;
 
 int dr[] = {-1, 1, 0, 0}; // U D R L
