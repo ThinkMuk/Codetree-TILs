@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstring>
 using namespace std;
 
 int dx[] = {-1, 1, 0, 0};  // U, D, R, L
@@ -12,6 +13,8 @@ struct Marble {
 };
 
 int N, M;
+int aliveCnt;
+int grid[51][51];
 vector<Marble> marbles;
 
 int dirToIdx(char d) {
@@ -38,36 +41,42 @@ void moveAll() {
 }
 
 void checkCollision() {
-    vector<vector<vector<int>>> grid(N + 1, vector<vector<int>>(N + 1));
+    memset(grid, 0, sizeof(grid));
 
     for (int i = 0; i < (int)marbles.size(); i++) {
         if (!marbles[i].alive) continue;
-        grid[marbles[i].x][marbles[i].y].push_back(i);
+        grid[marbles[i].x][marbles[i].y]++;
     }
 
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            if (grid[i][j].size() >= 2) {
-                for (int idx : grid[i][j]) {
-                    marbles[idx].alive = false;
-                }
-            }
+    for (int i = 0; i < (int)marbles.size(); i++) {
+        if (!marbles[i].alive) continue;
+        if (grid[marbles[i].x][marbles[i].y] >= 2) {
+            marbles[i].alive = false;
+            aliveCnt--;
         }
     }
 }
 
 int solve() {
+    aliveCnt = marbles.size();
     int MAX_STEP = N * N * 4;
+    int prevAlive = aliveCnt;
+    int noChangeStep = 0;
 
     for (int step = 0; step < MAX_STEP; step++) {
         moveAll();
         checkCollision();
+
+        if (aliveCnt == prevAlive) {
+            noChangeStep++;
+            if (noChangeStep >= 2 * N) break;
+        } else {
+            prevAlive = aliveCnt;
+            noChangeStep = 0;
+        }
     }
-    int cnt = 0;
-    for (const auto& m : marbles) {
-        if (m.alive) cnt++;
-    }
-    return cnt;
+
+    return aliveCnt;
 }
 
 int main() {
