@@ -6,16 +6,16 @@ int K,N;
 vector<int> ans;
 
 bool checkAns() {
-    int f_node = ans.front();
-    int cnt = 1;
-    for(int i = 1; i < ans.size(); i++)
-        if(ans[i] == f_node) cnt++;
-    
-    return cnt == 3;
+    bool isAns = true;
+    for(int i = 1; i < N - 1; i++) {
+        int node = ans[i];
+        if(ans[i - 1] == node && ans[i + 1] == node) isAns = false;
+    }
+    return isAns;
 }
 
 void printAns() {
-    if(checkAns()) return;
+    if(!checkAns()) return;
     for(int c : ans)
         cout << c << " ";
     cout << "\n";
