@@ -15,7 +15,7 @@ bool checkAns() {
 }
 
 void printAns() {
-    if((ans.size() != 1) && (checkAns())) return;
+    if(checkAns()) return;
     for(int c : ans)
         cout << c << " ";
     cout << "\n";
@@ -26,7 +26,6 @@ void solve(int cur) {
         printAns();
         return;
     }
-
 
     for(int select = 1; select <= K; select++) {
         ans.push_back(select);
