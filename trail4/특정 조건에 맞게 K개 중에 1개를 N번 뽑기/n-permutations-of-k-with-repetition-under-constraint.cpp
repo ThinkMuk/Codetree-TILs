@@ -7,15 +7,15 @@ vector<int> ans;
 
 bool checkAns() {
     int f_node = ans.front();
-    bool isAns = false;
+    int cnt = 1;
     for(int i = 1; i < ans.size(); i++)
-        if(ans[i] != f_node) isAns = true;
+        if(ans[i] == f_node) cnt++;
     
-    return isAns;
+    return cnt == 3;
 }
 
 void printAns() {
-    if((ans.size() != 1) && (!checkAns())) return;
+    if((ans.size() != 1) && (checkAns())) return;
     for(int c : ans)
         cout << c << " ";
     cout << "\n";
