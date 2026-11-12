@@ -1,3 +1,5 @@
+//그리디
+//나중에 DP로 풀어봐도 재미있을듯
 #include <iostream>
 
 using namespace std;
